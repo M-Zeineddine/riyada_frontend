@@ -1,6 +1,6 @@
 import 'package:go_router/go_router.dart';
 import 'package:flutter/widgets.dart';
-import 'package:riyada_frontend/app/features/home/home_page.dart';
+import 'package:riyada_frontend/app/features/home/presentation/home_page.dart';
 import 'package:riyada_frontend/app/features/welcome/welcome_page.dart';
 
 GoRouter createRouter() {
