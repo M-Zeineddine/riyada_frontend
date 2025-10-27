@@ -1,11 +1,11 @@
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:flutter/widgets.dart';
 import 'package:riyada_frontend/app/features/home/presentation/home_page.dart';
 import 'package:riyada_frontend/app/features/welcome/welcome_page.dart';
 
-GoRouter createRouter() {
+final routerProvider = Provider<GoRouter>((ref) {
   return GoRouter(
-    initialLocation: '/',
+    initialLocation: '/', // Starting location
     routes: [
       GoRoute(
         path: '/',
@@ -19,7 +19,5 @@ GoRouter createRouter() {
         builder: (context, state) => const HomePage(),
       ),
     ],
-    // (optional) errorBuilder for 404s
-    // errorBuilder: (context, state) => const NotFoundPage(),
   );
-}
+});

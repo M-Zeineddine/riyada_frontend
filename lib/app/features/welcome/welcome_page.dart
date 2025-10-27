@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:riyada_frontend/app/features/welcome/widgets/carousel_dot.dart';
+import 'package:riyada_frontend/app/features/welcome/widgets/social_button.dart';
 
 class WelcomePage extends ConsumerWidget {
   const WelcomePage({super.key});
@@ -57,11 +59,11 @@ class WelcomePage extends ConsumerWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: const [
-                  _Dot(active: true),
+                  CarouselDot(active: true),
                   SizedBox(width: 8),
-                  _Dot(active: false),
+                  CarouselDot(active: false),
                   SizedBox(width: 8),
-                  _Dot(active: false),
+                  CarouselDot(active: false),
                 ],
               ),
 
@@ -131,67 +133,16 @@ class WelcomePage extends ConsumerWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: const [
-                  _SocialButton(asset: 'assets/icons/google.png'),
+                  SocialButton(asset: 'assets/icons/google.png'),
                   SizedBox(width: 16),
-                  _SocialButton(asset: 'assets/icons/apple.png'),
+                  SocialButton(asset: 'assets/icons/apple.png'),
                   SizedBox(width: 16),
-                  _SocialButton(asset: 'assets/icons/email.png'),
+                  SocialButton(asset: 'assets/icons/email.png'),
                 ],
               ),
 
               const SizedBox(height: 24),
             ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class _Dot extends StatelessWidget {
-  const _Dot({required this.active});
-  final bool active;
-
-  @override
-  Widget build(BuildContext context) {
-    final cs = Theme.of(context).colorScheme;
-    return AnimatedContainer(
-      duration: const Duration(milliseconds: 200),
-      width: 8,
-      height: 8,
-      decoration: BoxDecoration(
-        color: active ? cs.primary : Colors.black12,
-        borderRadius: BorderRadius.circular(999),
-      ),
-    );
-  }
-}
-
-class _SocialButton extends StatelessWidget {
-  const _SocialButton({required this.asset});
-  final String asset;
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      width: 64,
-      height: 56,
-      child: Material(
-        color: Colors.white,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(14),
-          side: BorderSide(color: Colors.black.withOpacity(0.08)),
-        ),
-        child: InkWell(
-          borderRadius: BorderRadius.circular(14),
-          onTap: () {},
-          child: Center(
-            child: Image.asset(
-              asset,
-              width: 22,
-              height: 22,
-              fit: BoxFit.contain,
-            ),
           ),
         ),
       ),
