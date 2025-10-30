@@ -8,27 +8,24 @@ class SportCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 15),
-      child: Container(
-        decoration: BoxDecoration(
-          color: const Color.fromARGB(120, 230, 230, 230),
-          borderRadius: BorderRadius.circular(16),
-        ),
-        child: InkWell(
-          borderRadius: BorderRadius.circular(16),
-          onTap: onTap,
-          child: SizedBox(
-            width: 100,
-            // height: 100,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(sport.iconAsset, style: const TextStyle(fontSize: 22)),
-                const SizedBox(height: 10),
-                Text(sport.name),
-              ],
-            ),
+    return Container(
+      decoration: BoxDecoration(
+        color: const Color.fromARGB(120, 230, 230, 230),
+        borderRadius: BorderRadius.circular(16),
+      ),
+      child: InkWell(
+        borderRadius: BorderRadius.circular(16),
+        onTap: onTap,
+        child: SizedBox(
+          width: 100,
+          // height: 100,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(sport.iconAsset, style: const TextStyle(fontSize: 22)),
+              const SizedBox(height: 10),
+              Text(sport.name),
+            ],
           ),
         ),
       ),

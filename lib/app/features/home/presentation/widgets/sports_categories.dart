@@ -23,16 +23,25 @@ class SportsCategories extends StatelessWidget {
                 ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600),
               ),
               const Spacer(),
-              TextButton.icon(
+              TextButton(
                 onPressed: () {},
-                label: const Text('View All'),
-                icon: const Icon(Icons.chevron_right),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: const [
+                    Text(
+                      'View All',
+                      style: TextStyle(fontWeight: FontWeight.w600),
+                    ),
+                    SizedBox(width: 8),
+                    Icon(Icons.arrow_forward_ios_rounded, size: 14),
+                  ],
+                ),
               ),
             ],
           ),
         ),
         SizedBox(
-          height: 110,
+          height: 95,
           child: ListView.separated(
             scrollDirection: Axis.horizontal,
             padding: const EdgeInsets.only(left: 16),
