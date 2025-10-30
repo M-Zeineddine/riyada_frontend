@@ -32,7 +32,7 @@ class SportsCategories extends StatelessWidget {
           ),
         ),
         SizedBox(
-          height: 100,
+          height: 110,
           child: ListView.separated(
             scrollDirection: Axis.horizontal,
             padding: const EdgeInsets.only(left: 16),
