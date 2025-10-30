@@ -33,3 +33,23 @@ final nearbyCourtsProvider = Provider<List<CourtModel>>((ref) {
     ),
   ];
 });
+
+final sportsProvider = Provider<List<Sport>>((ref) {
+  return const [
+    Sport(name: 'Tennis', iconAsset: '🎾'),
+    Sport(name: 'Basketball', iconAsset: '🏀'),
+    Sport(name: 'Football', iconAsset: '⚽'),
+    Sport(name: 'Padel', iconAsset: '🎾'),
+    Sport(name: 'Volleyball', iconAsset: '🏐'),
+    Sport(name: 'Badminton', iconAsset: '🏸'),
+    Sport(name: 'Table Tennis', iconAsset: '🏓'),
+    Sport(name: 'Handball', iconAsset: '🤾‍♂️'),
+  ];
+});
+
+class Sport {
+  final String name;
+  final String iconAsset; // can also use an IconData instead
+
+  const Sport({required this.name, required this.iconAsset});
+}
