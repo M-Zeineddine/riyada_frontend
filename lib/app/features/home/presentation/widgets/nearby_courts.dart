@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:riyada_frontend/app/features/home/presentation/widgets/sport_card.dart';
-import 'package:riyada_frontend/app/shared/models/sport_model.dart';
+import 'package:riyada_frontend/app/features/court/data/court_model.dart';
+import 'package:riyada_frontend/app/features/home/presentation/widgets/nearby_court_card.dart';
 
 class NearbyCourts extends StatelessWidget {
-  final List<Sport> sportsList;
-  const NearbyCourts({super.key, required this.sportsList});
+  final List<CourtModel> nearbyCourtsList;
+  const NearbyCourts({super.key, required this.nearbyCourtsList});
 
   @override
   Widget build(BuildContext context) {
@@ -13,14 +13,15 @@ class NearbyCourts extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
+          padding: const EdgeInsets.fromLTRB(16, 0, 0, 0),
           child: Row(
             children: [
               Text(
-                "Popular Sports",
-                style: Theme.of(
-                  context,
-                ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600),
+                "Nearby Courts",
+                style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                  fontWeight: FontWeight.w600,
+                  fontSize: 18,
+                ),
               ),
               const Spacer(),
               TextButton(
@@ -40,17 +41,16 @@ class NearbyCourts extends StatelessWidget {
             ],
           ),
         ),
-        SizedBox(
-          height: 95,
-          child: ListView.separated(
-            scrollDirection: Axis.horizontal,
-            padding: const EdgeInsets.only(left: 16),
-            itemCount: sportsList.length,
-            separatorBuilder: (_, __) => const SizedBox(width: 8),
-            itemBuilder: (context, index) => SportCard(
-              sport: sportsList[index],
-              onTap: () => context.push('/sport/${sportsList[index].name}'),
-            ),
+        SizedBox(height: 5),
+        ListView.separated(
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          padding: const EdgeInsets.only(left: 16, right: 16),
+          itemCount: nearbyCourtsList.length,
+          separatorBuilder: (_, __) => const SizedBox(height: 20),
+          itemBuilder: (context, index) => NearbyCourtCard(
+            court: nearbyCourtsList[index],
+            onTap: () => context.push('/court/${nearbyCourtsList[index].name}'),
           ),
         ),
       ],

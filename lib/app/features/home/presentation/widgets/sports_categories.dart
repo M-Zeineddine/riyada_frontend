@@ -13,14 +13,15 @@ class SportsCategories extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
+          padding: const EdgeInsets.fromLTRB(16, 0, 0, 0),
           child: Row(
             children: [
               Text(
                 "Popular Sports",
-                style: Theme.of(
-                  context,
-                ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600),
+                style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                  fontWeight: FontWeight.w600,
+                  fontSize: 18,
+                ),
               ),
               const Spacer(),
               TextButton(
