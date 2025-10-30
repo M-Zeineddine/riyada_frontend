@@ -4,7 +4,6 @@ import 'package:riyada_frontend/app/features/court/data/court_model.dart';
 import 'package:riyada_frontend/app/features/home/application/home_provider.dart';
 import 'package:riyada_frontend/app/features/home/presentation/widgets/hero_banner.dart';
 import 'package:riyada_frontend/app/features/home/presentation/widgets/sports_categories.dart';
-// import 'package:riyada_frontend/app/features/home/application/home_provider.dart';
 import 'package:riyada_frontend/app/features/user/application/user_provider.dart';
 
 class HomePage extends ConsumerWidget {

@@ -3,9 +3,9 @@ import 'package:go_router/go_router.dart';
 import 'package:riyada_frontend/app/features/home/presentation/widgets/sport_card.dart';
 import 'package:riyada_frontend/app/shared/models/sport_model.dart';
 
-class SportsCategories extends StatelessWidget {
+class NearbyCourts extends StatelessWidget {
   final List<Sport> sportsList;
-  const SportsCategories({super.key, required this.sportsList});
+  const NearbyCourts({super.key, required this.sportsList});
 
   @override
   Widget build(BuildContext context) {

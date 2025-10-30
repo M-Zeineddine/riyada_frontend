@@ -1,5 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riyada_frontend/app/features/court/data/court_model.dart';
+import 'package:riyada_frontend/app/shared/models/sport_model.dart';
 
 final nearbyCourtsProvider = Provider<List<CourtModel>>((ref) {
   return const [
@@ -46,10 +47,3 @@ final sportsProvider = Provider<List<Sport>>((ref) {
     Sport(name: 'Handball', iconAsset: '🤾‍♂️'),
   ];
 });
-
-class Sport {
-  final String name;
-  final String iconAsset; // can also use an IconData instead
-
-  const Sport({required this.name, required this.iconAsset});
-}

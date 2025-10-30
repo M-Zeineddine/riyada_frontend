@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:riyada_frontend/app/shared/models/sport_model.dart';
 
-class SportCard extends StatelessWidget {
+class NearbyCourtCard extends StatelessWidget {
   final Sport sport;
   final VoidCallback? onTap;
-  const SportCard({super.key, required this.sport, this.onTap});
+  const NearbyCourtCard({super.key, required this.sport, this.onTap});
 
   @override
   Widget build(BuildContext context) {
