@@ -21,21 +21,37 @@ class HeroBanner extends StatelessWidget {
           Positioned(
             top: 40,
             left: 15,
-            child: GlassContainer(
-              mainText: loggedUser.location,
-              icon: Icons.location_on_outlined,
-              backgroundColor: Colors.white,
-              textColor: Colors.white,
-              iconColor: Colors.white,
-              fontWeight: FontWeight.bold,
-              fontSize: 13,
-              iconSize: 20,
-              height: 32,
+            right: 10,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                GlassContainer(
+                  mainText: loggedUser.location,
+                  icon: Icons.location_on_outlined,
+                  backgroundColor: Colors.white,
+                  textColor: Colors.white,
+                  iconColor: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 13,
+                  iconSize: 20,
+                  height: 32,
+                ),
+                GlassContainer(
+                  mainText: '1150 points',
+                  backgroundColor: Colors.white,
+                  textColor: Colors.white,
+                  iconColor: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 13,
+                  iconSize: 20,
+                  height: 32,
+                ),
+              ],
             ),
           ),
 
           Positioned(
-            left: 20,
+            left: 15,
             bottom: 15,
             right: 20,
             child: Column(

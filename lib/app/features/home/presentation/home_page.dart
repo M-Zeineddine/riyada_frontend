@@ -52,8 +52,8 @@ class _HomePageState extends ConsumerState<HomePage> {
       body: IndexedStack(index: _selectedIndex, children: pages),
       bottomNavigationBar: ClipRRect(
         borderRadius: const BorderRadius.only(
-          topLeft: Radius.circular(10),
-          topRight: Radius.circular(10),
+          topLeft: Radius.circular(12),
+          topRight: Radius.circular(12),
         ),
         child: NavigationBar(
           selectedIndex: _selectedIndex,
