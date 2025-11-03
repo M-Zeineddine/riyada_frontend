@@ -11,7 +11,7 @@ class NearbyCourtCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final cs = theme.colorScheme;
-    final textTheme = theme.textTheme;
+    // final textTheme = theme.textTheme;
 
     return InkWell(
       borderRadius: BorderRadius.circular(16),
