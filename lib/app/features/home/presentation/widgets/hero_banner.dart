@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:riyada_frontend/app/features/court/application/courts_filter_provider.dart';
 import 'package:riyada_frontend/app/features/home/presentation/widgets/glass_container.dart';
 import 'package:riyada_frontend/app/features/user/data/user_model.dart';
 
-class HeroBanner extends StatelessWidget {
+class HeroBanner extends ConsumerWidget {
   final UserModel loggedUser;
   const HeroBanner({super.key, required this.loggedUser});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return SizedBox(
       height: 360,
       width: double.infinity,
@@ -94,10 +96,11 @@ class HeroBanner extends StatelessWidget {
                         fontSize: 20,
                         height: 48,
                         onTap: () {
-                          context.goNamed(
-                            'courts',
-                            queryParameters: {'sport': 'all_sports'},
-                          );
+                          ref.read(courtsFilterProvider.notifier).reset();
+                          ref
+                              .read(courtsFilterProvider.notifier)
+                              .setSort('nearby');
+                          context.goNamed('courts');
                         },
                       ),
                     ),

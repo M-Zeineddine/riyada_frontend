@@ -1,11 +1,10 @@
-// app_router.dart
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter/material.dart';
 import 'package:riyada_frontend/app/app_shell_scaffold.dart';
 
 import 'package:riyada_frontend/app/features/welcome/welcome_page.dart';
-import 'package:riyada_frontend/app/features/home/presentation/home_page.dart'; // make this CONTENT ONLY (no bottom bar)
+import 'package:riyada_frontend/app/features/home/presentation/home_page.dart';
 import 'package:riyada_frontend/app/features/court/courts_page.dart';
 
 final routerProvider = Provider<GoRouter>((ref) {
@@ -39,11 +38,7 @@ final routerProvider = Provider<GoRouter>((ref) {
               GoRoute(
                 path: '/courts',
                 name: 'courts',
-                builder: (_, s) {
-                  final sport = s.uri.queryParameters['sport'];
-                  final sort = s.uri.queryParameters['sort'];
-                  return CourtsPage(initialSport: sport, initialSort: sort);
-                },
+                builder: (_, __) => const CourtsPage(),
                 // routes: [
                 //   GoRoute(
                 //     path: 'detail/:id', // /courts/detail/123

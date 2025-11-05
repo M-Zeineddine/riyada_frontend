@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:riyada_frontend/app/features/court/application/courts_filter_provider.dart';
 import 'package:riyada_frontend/app/features/court/data/court_model.dart';
 import 'package:riyada_frontend/app/features/home/presentation/widgets/nearby_court_card.dart';
 
-class NearbyCourts extends StatelessWidget {
+class NearbyCourts extends ConsumerWidget {
   final List<CourtModel> nearbyCourtsList;
   const NearbyCourts({super.key, required this.nearbyCourtsList});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -25,10 +27,11 @@ class NearbyCourts extends StatelessWidget {
               ),
               const Spacer(),
               TextButton(
-                onPressed: () => context.goNamed(
-                  'courts',
-                  queryParameters: {'sort': 'nearby'},
-                ),
+                onPressed: () {
+                  ref.read(courtsFilterProvider.notifier).reset();
+                  ref.read(courtsFilterProvider.notifier).setSort('nearby');
+                  context.goNamed('courts');
+                },
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: const [

@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:riyada_frontend/app/features/court/application/courts_filter_provider.dart';
 import 'package:riyada_frontend/app/features/home/presentation/widgets/sport_card.dart';
 import 'package:riyada_frontend/app/shared/models/sport_model.dart';
 
-class SportsCategories extends StatelessWidget {
+class SportsCategories extends ConsumerWidget {
   final List<Sport> sportsList;
   const SportsCategories({super.key, required this.sportsList});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -26,10 +28,11 @@ class SportsCategories extends StatelessWidget {
               const Spacer(),
               TextButton(
                 onPressed: () {
-                  context.goNamed(
-                    'courts',
-                    queryParameters: {'sport': 'all_sports'},
-                  );
+                  ref.read(courtsFilterProvider.notifier).reset();
+                  ref
+                      .read(courtsFilterProvider.notifier)
+                      .setSport('all_sports');
+                  context.goNamed('courts');
                 },
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
@@ -55,10 +58,12 @@ class SportsCategories extends StatelessWidget {
             separatorBuilder: (_, __) => const SizedBox(width: 8),
             itemBuilder: (context, index) => SportCard(
               sport: sportsList[index],
-              onTap: () => context.goNamed(
-                'courts',
-                queryParameters: {'sport': sportsList[index].name},
-              ),
+              onTap: () {
+                ref
+                    .read(courtsFilterProvider.notifier)
+                    .setSport(sportsList[index].name);
+                context.goNamed('courts');
+              },
             ),
           ),
         ),
