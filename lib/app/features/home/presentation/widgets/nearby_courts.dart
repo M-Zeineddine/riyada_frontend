@@ -25,7 +25,10 @@ class NearbyCourts extends StatelessWidget {
               ),
               const Spacer(),
               TextButton(
-                onPressed: () {},
+                onPressed: () => context.goNamed(
+                  'courts',
+                  queryParameters: {'sort': 'nearby'},
+                ),
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: const [

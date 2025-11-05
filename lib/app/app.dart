@@ -11,10 +11,11 @@ class MyApp extends ConsumerWidget {
     final router = ref.watch(routerProvider);
 
     return MaterialApp.router(
-      title: 'Your App',
+      title: 'Riyada',
       theme: AppTheme.light,
       // darkTheme: AppTheme.dark,
       routerConfig: router,
+      debugShowCheckedModeBanner: false,
     );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:riyada_frontend/app/features/home/presentation/widgets/glass_container.dart';
 import 'package:riyada_frontend/app/features/user/data/user_model.dart';
 
@@ -93,7 +94,10 @@ class HeroBanner extends StatelessWidget {
                         fontSize: 20,
                         height: 48,
                         onTap: () {
-                          print("Route to courts");
+                          context.goNamed(
+                            'courts',
+                            queryParameters: {'sport': 'all_sports'},
+                          );
                         },
                       ),
                     ),

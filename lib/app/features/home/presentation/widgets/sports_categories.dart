@@ -25,7 +25,12 @@ class SportsCategories extends StatelessWidget {
               ),
               const Spacer(),
               TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  context.goNamed(
+                    'courts',
+                    queryParameters: {'sport': 'all_sports'},
+                  );
+                },
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: const [
@@ -42,7 +47,7 @@ class SportsCategories extends StatelessWidget {
           ),
         ),
         SizedBox(
-          height: 95,
+          height: 85,
           child: ListView.separated(
             scrollDirection: Axis.horizontal,
             padding: const EdgeInsets.only(left: 16),
@@ -50,7 +55,10 @@ class SportsCategories extends StatelessWidget {
             separatorBuilder: (_, __) => const SizedBox(width: 8),
             itemBuilder: (context, index) => SportCard(
               sport: sportsList[index],
-              onTap: () => context.push('/sport/${sportsList[index].name}'),
+              onTap: () => context.goNamed(
+                'courts',
+                queryParameters: {'sport': sportsList[index].name},
+              ),
             ),
           ),
         ),

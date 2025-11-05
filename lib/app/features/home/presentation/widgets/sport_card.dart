@@ -17,7 +17,7 @@ class SportCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
         onTap: onTap,
         child: SizedBox(
-          width: 100,
+          width: 85,
           // height: 100,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
