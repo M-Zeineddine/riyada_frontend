@@ -5,7 +5,7 @@ import 'package:riyada_frontend/app/app_shell_scaffold.dart';
 
 import 'package:riyada_frontend/app/features/welcome/welcome_page.dart';
 import 'package:riyada_frontend/app/features/home/presentation/home_page.dart';
-import 'package:riyada_frontend/app/features/court/courts_page.dart';
+import 'package:riyada_frontend/app/features/court/presentation/courts_page.dart';
 
 final routerProvider = Provider<GoRouter>((ref) {
   return GoRouter(
