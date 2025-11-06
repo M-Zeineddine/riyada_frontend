@@ -51,13 +51,23 @@ class NearbyCourts extends ConsumerWidget {
         ListView.separated(
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
-          padding: const EdgeInsets.only(left: 16, right: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 16),
           itemCount: nearbyCourtsList.length,
           separatorBuilder: (_, __) => const SizedBox(height: 20),
-          itemBuilder: (context, index) => NearbyCourtCard(
-            court: nearbyCourtsList[index],
-            onTap: () => context.push('/court/${nearbyCourtsList[index].name}'),
-          ),
+          itemBuilder: (context, i) {
+            final court = nearbyCourtsList[i];
+            return NearbyCourtCard(
+              court: court,
+              onTap: () => context.pushNamed(
+                'courtDetail',
+                pathParameters: {'id': court.id},
+              ),
+              onBook: () => context.pushNamed(
+                'courtDetail',
+                pathParameters: {'id': court.id},
+              ),
+            );
+          },
         ),
       ],
     );
