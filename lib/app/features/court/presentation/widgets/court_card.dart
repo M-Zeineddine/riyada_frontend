@@ -35,27 +35,60 @@ class CourtCard extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              AspectRatio(
-                aspectRatio: 14 / 7,
-                child: Image.network(
-                  court.imageUrl,
-                  fit: BoxFit.cover,
-                  errorBuilder: (_, __, ___) =>
-                      Container(color: Colors.black12),
-                ),
+              Stack(
+                children: [
+                  AspectRatio(
+                    aspectRatio: 14 / 7,
+                    child: Image.network(
+                      court.imageUrl,
+                      fit: BoxFit.cover,
+                      errorBuilder: (_, __, ___) =>
+                          Container(color: Colors.black12),
+                    ),
+                  ),
+                  Positioned(
+                    top: 8,
+                    left: 8,
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 10,
+                        vertical: 5,
+                      ),
+                      decoration: BoxDecoration(
+                        color: Colors.white.withOpacity(0.9),
+                        borderRadius: BorderRadius.circular(10),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black12,
+                            blurRadius: 4,
+                            offset: const Offset(0, 1),
+                          ),
+                        ],
+                      ),
+                      child: Text(
+                        court.sport,
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w600,
+                          color: cs.primary,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
 
-              // the rest expands to fill remaining space
               Expanded(
                 child: Padding(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 8,
-                    vertical: 6,
+                    vertical: 4,
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      // title
+                      SizedBox(height: 1),
+                      
                       Padding(
                         padding: const EdgeInsets.only(left: 3),
                         child: Text(
@@ -69,7 +102,8 @@ class CourtCard extends StatelessWidget {
                         ),
                       ),
 
-                      // location + distance
+                      SizedBox(height: 3),
+
                       Row(
                         children: [
                           const Icon(
@@ -104,7 +138,6 @@ class CourtCard extends StatelessWidget {
 
                       const Spacer(),
 
-                      // price + action
                       Padding(
                         padding: const EdgeInsets.only(left: 4),
                         child: Row(
