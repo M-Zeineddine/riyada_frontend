@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riyada_frontend/app/features/court/data/court_model.dart';
-import 'package:riyada_frontend/app/shared/models/sport_model.dart';
+import 'package:riyada_frontend/app/shared/models/sport_category_model.dart';
 
 final nearbyCourtsProvider = Provider<List<CourtModel>>((ref) {
   return const [
@@ -39,15 +39,15 @@ final nearbyCourtsProvider = Provider<List<CourtModel>>((ref) {
   ];
 });
 
-final sportsProvider = Provider<List<Sport>>((ref) {
+final sportsProvider = Provider<List<SportCategory>>((ref) {
   return const [
-    Sport(name: 'Tennis', iconAsset: '🎾'),
-    Sport(name: 'Basketball', iconAsset: '🏀'),
-    Sport(name: 'Football', iconAsset: '⚽'),
-    Sport(name: 'Padel', iconAsset: '🎾'),
-    Sport(name: 'Volleyball', iconAsset: '🏐'),
-    Sport(name: 'Badminton', iconAsset: '🏸'),
-    Sport(name: 'Table Tennis', iconAsset: '🏓'),
-    Sport(name: 'Handball', iconAsset: '🤾‍♂️'),
+    SportCategory(name: 'Tennis', iconAsset: '🎾'),
+    SportCategory(name: 'Basketball', iconAsset: '🏀'),
+    SportCategory(name: 'Football', iconAsset: '⚽'),
+    SportCategory(name: 'Padel', iconAsset: '🎾'),
+    SportCategory(name: 'Volleyball', iconAsset: '🏐'),
+    SportCategory(name: 'Badminton', iconAsset: '🏸'),
+    SportCategory(name: 'Table Tennis', iconAsset: '🏓'),
+    SportCategory(name: 'Handball', iconAsset: '🤾‍♂️'),
   ];
 });

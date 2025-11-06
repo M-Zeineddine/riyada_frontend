@@ -3,10 +3,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riyada_frontend/app/features/court/application/courts_filter_provider.dart';
 import 'package:riyada_frontend/app/features/home/presentation/widgets/sport_card.dart';
-import 'package:riyada_frontend/app/shared/models/sport_model.dart';
+import 'package:riyada_frontend/app/shared/models/sport_category_model.dart';
 
 class SportsCategories extends ConsumerWidget {
-  final List<Sport> sportsList;
+  final List<SportCategory> sportsList;
   const SportsCategories({super.key, required this.sportsList});
 
   @override

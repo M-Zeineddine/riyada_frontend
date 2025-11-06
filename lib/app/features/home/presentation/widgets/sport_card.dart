@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:riyada_frontend/app/shared/models/sport_model.dart';
+import 'package:riyada_frontend/app/shared/models/sport_category_model.dart';
 
 class SportCard extends StatelessWidget {
-  final Sport sport;
+  final SportCategory sport;
   final VoidCallback? onTap;
   const SportCard({super.key, required this.sport, this.onTap});
 
