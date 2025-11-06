@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riyada_frontend/app/features/court/application/courts_data_providers.dart';
 import 'package:riyada_frontend/app/features/court/presentation/widgets/courts_search_bar.dart';
+import 'package:riyada_frontend/app/features/court/presentation/widgets/active_filters_row.dart';
+import 'package:riyada_frontend/app/features/court/presentation/widgets/courts_filter_bottom_sheet.dart';
 import 'package:riyada_frontend/app/features/home/presentation/widgets/nearby_court_card.dart';
 
 class CourtsPage extends ConsumerStatefulWidget {
@@ -14,18 +16,31 @@ class CourtsPage extends ConsumerStatefulWidget {
 }
 
 class _CourtsPageState extends ConsumerState<CourtsPage> {
+  void _showFilters() {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      builder: (context) => const CourtsFilterBottomSheet(),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final courts = ref.watch(filteredCourtsProvider);
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Courts')),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          const SizedBox(height: 40),
+
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
-            child: CourtsSearchBar(onFilterTap: () {}),
+            child: CourtsSearchBar(onFilterTap: _showFilters),
           ),
+
+          const ActiveFiltersRow(),
 
           Expanded(
             child: courts.isEmpty
@@ -64,18 +79,8 @@ class _CourtsPageState extends ConsumerState<CourtsPage> {
                       final court = courts[i];
                       return NearbyCourtCard(
                         court: court,
-                        onTap: () => {
-                          // context.pushNamed(
-                          //   'courtDetail',
-                          //   pathParameters: {'id': court.id},
-                          // ),
-                        },
-                        onBook: () => {
-                          // context.pushNamed(
-                          //   'courtDetail',
-                          //   pathParameters: {'id': court.id},
-                          // ),
-                        },
+                        onTap: () => {},
+                        onBook: () => {},
                       );
                     },
                   ),

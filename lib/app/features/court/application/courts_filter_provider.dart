@@ -8,11 +8,11 @@ class CourtsFilterNotifier extends Notifier<CourtsFilter> {
   }
 
   void setSport(String? sport) {
-    state = state.copyWith(sport: sport);
+    state = CourtsFilter(sport: sport, sort: state.sort);
   }
 
   void setSort(String? sort) {
-    state = state.copyWith(sort: sort);
+    state = CourtsFilter(sport: state.sport, sort: sort);
   }
 
   void setFilters({String? sport, String? sort}) {

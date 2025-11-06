@@ -13,6 +13,7 @@ final allCourtsProvider = Provider<List<CourtModel>>((ref) {
       pricePerHour: 30,
       imageUrl: 'https://picsum.photos/seed/field1/400/250',
       distanceKm: 3,
+      sport: 'Football',
     ),
     CourtModel(
       id: 'c2',
@@ -21,6 +22,7 @@ final allCourtsProvider = Provider<List<CourtModel>>((ref) {
       pricePerHour: 25,
       imageUrl: 'https://picsum.photos/seed/field2/400/250',
       distanceKm: 5,
+      sport: 'Basketball',
     ),
     CourtModel(
       id: 'c3',
@@ -29,6 +31,7 @@ final allCourtsProvider = Provider<List<CourtModel>>((ref) {
       pricePerHour: 28,
       imageUrl: 'https://picsum.photos/seed/field3/400/250',
       distanceKm: 8,
+      sport: 'Tennis',
     ),
     CourtModel(
       id: 'c4',
@@ -37,6 +40,25 @@ final allCourtsProvider = Provider<List<CourtModel>>((ref) {
       pricePerHour: 35,
       imageUrl: 'https://picsum.photos/seed/field4/400/250',
       distanceKm: 10,
+      sport: 'Padel',
+    ),
+    CourtModel(
+      id: 'c5',
+      name: 'Beach Volleyball Arena',
+      location: 'Jounieh, Lebanon',
+      pricePerHour: 20,
+      imageUrl: 'https://picsum.photos/seed/field5/400/250',
+      distanceKm: 7,
+      sport: 'Volleyball',
+    ),
+    CourtModel(
+      id: 'c6',
+      name: 'City Football Stadium',
+      location: 'Tripoli, Lebanon',
+      pricePerHour: 40,
+      imageUrl: 'https://picsum.photos/seed/field6/400/250',
+      distanceKm: 12,
+      sport: 'Football',
     ),
   ];
 });
@@ -46,19 +68,20 @@ final filteredCourtsProvider = Provider<List<CourtModel>>((ref) {
   final q = ref.watch(courtsSearchQueryProvider).trim().toLowerCase();
   final filter = ref.watch(courtsFilterProvider);
 
-  var items = q.isEmpty
-      ? all
+  List<CourtModel> items = q.isEmpty
+      ? List<CourtModel>.from(all)
       : all.where((c) {
           final name = c.name.toLowerCase();
           final loc = c.location.toLowerCase();
           return name.contains(q) || loc.contains(q);
         }).toList();
 
-  if (filter.sport != null && filter.sport!.isNotEmpty) {
-    final s = filter.sport!.toLowerCase();
-    items = items.where((c) {
-      return c.name.toLowerCase().contains(s);
-    }).toList();
+  if (filter.sport != null &&
+      filter.sport!.isNotEmpty &&
+      filter.sport != 'all_sports') {
+    items = items
+        .where((c) => c.sport.toLowerCase() == filter.sport!.toLowerCase())
+        .toList();
   }
 
   switch (filter.sort) {
@@ -67,10 +90,10 @@ final filteredCourtsProvider = Provider<List<CourtModel>>((ref) {
         (a, b) => (a.distanceKm ?? 1 << 30).compareTo(b.distanceKm ?? 1 << 30),
       );
       break;
-    case 'priceAsc':
+    case 'price_low':
       items.sort((a, b) => a.pricePerHour.compareTo(b.pricePerHour));
       break;
-    case 'priceDesc':
+    case 'price_high':
       items.sort((a, b) => b.pricePerHour.compareTo(a.pricePerHour));
       break;
     default:

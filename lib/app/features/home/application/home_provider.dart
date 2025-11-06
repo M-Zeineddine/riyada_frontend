@@ -11,6 +11,7 @@ final nearbyCourtsProvider = Provider<List<CourtModel>>((ref) {
       pricePerHour: 30,
       imageUrl: 'https://picsum.photos/seed/field1/400/250',
       distanceKm: 3,
+      sport: 'Football',
     ),
     CourtModel(
       id: 'c2',
@@ -19,6 +20,7 @@ final nearbyCourtsProvider = Provider<List<CourtModel>>((ref) {
       pricePerHour: 25,
       imageUrl: 'https://picsum.photos/seed/field2/400/250',
       distanceKm: 5,
+      sport: 'Football',
     ),
     CourtModel(
       id: 'c2',
@@ -27,6 +29,7 @@ final nearbyCourtsProvider = Provider<List<CourtModel>>((ref) {
       pricePerHour: 25,
       imageUrl: 'https://picsum.photos/seed/field3/400/250',
       distanceKm: 8,
+      sport: 'Football',
     ),
     CourtModel(
       id: 'c2',
@@ -35,6 +38,7 @@ final nearbyCourtsProvider = Provider<List<CourtModel>>((ref) {
       pricePerHour: 25,
       imageUrl: 'https://picsum.photos/seed/field4/400/250',
       distanceKm: 10,
+      sport: 'Football',
     ),
   ];
 });

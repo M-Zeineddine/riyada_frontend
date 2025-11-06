@@ -5,6 +5,7 @@ class CourtModel {
   final int pricePerHour;
   final String imageUrl;
   final int? distanceKm;
+  final String sport;
 
   const CourtModel({
     required this.id,
@@ -13,5 +14,6 @@ class CourtModel {
     required this.pricePerHour,
     required this.imageUrl,
     required this.distanceKm,
+    required this.sport,
   });
 }
