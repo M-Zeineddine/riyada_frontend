@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riyada_frontend/app/features/booking/presentation/court_booking_page.dart';
 import 'package:riyada_frontend/app/features/court/application/courts_data_providers.dart';
 import 'package:riyada_frontend/app/features/court/presentation/widgets/courts_search_bar.dart';
 import 'package:riyada_frontend/app/features/court/presentation/widgets/active_filters_row.dart';
@@ -80,7 +81,14 @@ class _CourtsPageState extends ConsumerState<CourtsPage> {
                       return NearbyCourtCard(
                         court: court,
                         onTap: () => {},
-                        onBook: () => {},
+                        onBook: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => CourtBookingPage(court: court),
+                            ),
+                          );
+                        },
                       );
                     },
                   ),

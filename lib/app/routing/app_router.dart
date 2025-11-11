@@ -2,6 +2,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter/material.dart';
 import 'package:riyada_frontend/app/app_shell_scaffold.dart';
+import 'package:riyada_frontend/app/features/booking/presentation/bookings_page.dart';
 
 import 'package:riyada_frontend/app/features/welcome/welcome_page.dart';
 import 'package:riyada_frontend/app/features/home/presentation/home_page.dart';
@@ -67,7 +68,7 @@ final routerProvider = Provider<GoRouter>((ref) {
               GoRoute(
                 path: '/bookings',
                 name: 'bookings',
-                builder: (_, __) => const Center(child: Text("dfjkdf")),
+                builder: (_, __) => const BookingsPage(),
               ),
             ],
           ),

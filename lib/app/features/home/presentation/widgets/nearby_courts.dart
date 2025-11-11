@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:riyada_frontend/app/features/booking/presentation/court_booking_page.dart';
 import 'package:riyada_frontend/app/features/court/application/courts_filter_provider.dart';
 import 'package:riyada_frontend/app/features/court/data/court_model.dart';
 import 'package:riyada_frontend/app/features/home/presentation/widgets/nearby_court_card.dart';
@@ -62,10 +63,14 @@ class NearbyCourts extends ConsumerWidget {
                 'courtDetail',
                 pathParameters: {'id': court.id},
               ),
-              onBook: () => context.pushNamed(
-                'courtDetail',
-                pathParameters: {'id': court.id},
-              ),
+              onBook: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => CourtBookingPage(court: court),
+                  ),
+                );
+              },
             );
           },
         ),
