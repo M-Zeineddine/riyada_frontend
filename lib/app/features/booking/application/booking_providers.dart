@@ -63,18 +63,20 @@ final allBookingsProvider = Provider<List<BookingModel>>((ref) {
   ];
 });
 
-// Upcoming bookings
 final upcomingBookingsProvider = Provider<List<BookingModel>>((ref) {
   final all = ref.watch(allBookingsProvider);
-  return all.where((b) => b.isUpcoming).toList()
-    ..sort((a, b) => a.date.compareTo(b.date));
+  final now = DateTime.now();
+  final list = all.where((b) => b.date.isAfter(now)).toList();
+  list.sort((a, b) => a.date.compareTo(b.date));
+  return list;
 });
 
-// Past bookings
 final pastBookingsProvider = Provider<List<BookingModel>>((ref) {
   final all = ref.watch(allBookingsProvider);
-  return all.where((b) => b.isPast).toList()
-    ..sort((a, b) => b.date.compareTo(a.date));
+  final now = DateTime.now();
+  final list = all.where((b) => b.date.isBefore(now)).toList();
+  list.sort((a, b) => b.date.compareTo(a.date));
+  return list;
 });
 
 // Selected date for booking
@@ -84,10 +86,12 @@ class SelectedBookingDate extends Notifier<DateTime?> {
 
   void setDate(DateTime date) {
     state = date;
+    ref.read(selectedTimeSlotProvider.notifier).clear();
   }
 
   void clear() {
     state = null;
+    ref.read(selectedTimeSlotProvider.notifier).clear();
   }
 }
 
@@ -116,19 +120,32 @@ final selectedTimeSlotProvider = NotifierProvider<SelectedTimeSlot, String?>(
   },
 );
 
+final selectedDurationProvider = NotifierProvider<SelectedDuration, double>(
+  () => SelectedDuration(),
+);
+
 class SelectedDuration extends Notifier<double> {
   @override
   double build() => 1.0; // Default 1 hour
 
   void setDuration(double hours) {
     state = hours;
+    ref.read(selectedTimeSlotProvider.notifier).clear();
   }
 
   void clear() {
     state = 1.0;
+    ref.read(selectedTimeSlotProvider.notifier).clear();
   }
 }
 
-final selectedDurationProvider = NotifierProvider<SelectedDuration, double>(() {
-  return SelectedDuration();
+final totalPriceProvider = Provider.family<double, double>((ref, pricePerHour) {
+  final hours = ref.watch(selectedDurationProvider);
+  return pricePerHour * hours;
+});
+
+final canConfirmBookingProvider = Provider<bool>((ref) {
+  final date = ref.watch(selectedBookingDateProvider);
+  final slot = ref.watch(selectedTimeSlotProvider);
+  return date != null && slot != null;
 });
