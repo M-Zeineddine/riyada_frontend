@@ -156,12 +156,12 @@ class BookingCard extends StatelessWidget {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        '\$${booking.pricePerHour}/hour',
-                        style: theme.textTheme.bodyMedium?.copyWith(
-                          color: Colors.grey.shade600,
-                        ),
-                      ),
+                      // Text(
+                      //   '\$${booking.pricePerHour}/hour',
+                      //   style: theme.textTheme.bodyMedium?.copyWith(
+                      //     color: Colors.grey.shade600,
+                      //   ),
+                      // ),
                       const SizedBox(height: 4),
                       Text(
                         '\$${booking.totalPrice.toStringAsFixed(0)} total (${_formatDuration(booking.durationHours)})',
