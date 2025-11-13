@@ -63,14 +63,11 @@ class NearbyCourts extends ConsumerWidget {
                 'courtDetail',
                 pathParameters: {'id': court.id},
               ),
-              onBook: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (_) => CourtBookingPage(court: court),
-                  ),
-                );
-              },
+              onBook: () => context.pushNamed(
+                'courtBooking',
+                pathParameters: {'id': court.id},
+                extra: court,
+              ),
             );
           },
         ),

@@ -3,6 +3,9 @@ import 'package:go_router/go_router.dart';
 import 'package:flutter/material.dart';
 import 'package:riyada_frontend/app/app_shell_scaffold.dart';
 import 'package:riyada_frontend/app/features/booking/presentation/bookings_page.dart';
+import 'package:riyada_frontend/app/features/booking/presentation/court_booking_page.dart';
+import 'package:riyada_frontend/app/features/court/data/court_model.dart';
+import 'package:riyada_frontend/app/features/court/presentation/court_detail_page.dart';
 
 import 'package:riyada_frontend/app/features/welcome/welcome_page.dart';
 import 'package:riyada_frontend/app/features/home/presentation/home_page.dart';
@@ -40,13 +43,28 @@ final routerProvider = Provider<GoRouter>((ref) {
                 path: '/courts',
                 name: 'courts',
                 builder: (_, __) => const CourtsPage(),
-                // routes: [
-                //   GoRoute(
-                //     path: 'detail/:id', // /courts/detail/123
-                //     name: 'courtDetail',
-                //     builder: (_, s) => CourtDetailPage(id: s.pathParameters['id']!),
-                //   ),
-                // ],
+                routes: [
+                  GoRoute(
+                    path: 'detail/:id',
+                    name: 'courtDetail',
+                    builder: (_, s) =>
+                        CourtDetailPage(id: s.pathParameters['id']!),
+                  ),
+                  GoRoute(
+                    path: 'book/:id', // /courts/book/c1
+                    name: 'courtBooking',
+                    builder: (_, s) {
+                      // Either read from s.extra or fetch by id with a provider
+                      final court = s.extra as CourtModel?;
+                      if (court == null) {
+                        // Fallback: fetch by id if you prefer
+                        // return CourtBookingPage(court: ref.read(courtByIdProvider(s.pathParameters['id']!))!);
+                        return const SizedBox.shrink(); // or an error page
+                      }
+                      return CourtBookingPage(court: court);
+                    },
+                  ),
+                ],
               ),
             ],
           ),

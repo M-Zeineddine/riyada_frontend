@@ -6,6 +6,7 @@ class CourtModel {
   final String imageUrl;
   final int? distanceKm;
   final String sport;
+  final List<String>? amenities;
 
   const CourtModel({
     required this.id,
@@ -15,5 +16,6 @@ class CourtModel {
     required this.imageUrl,
     required this.distanceKm,
     required this.sport,
+    this.amenities,
   });
 }

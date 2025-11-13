@@ -14,6 +14,13 @@ final allCourtsProvider = Provider<List<CourtModel>>((ref) {
       imageUrl: 'https://picsum.photos/seed/field1/400/250',
       distanceKm: 3,
       sport: 'Football',
+      amenities: [
+        'Parking',
+        'Showers',
+        'Locker Rooms',
+        'Lights',
+        'Referee Optional',
+      ],
     ),
     CourtModel(
       id: 'c2',
@@ -23,6 +30,7 @@ final allCourtsProvider = Provider<List<CourtModel>>((ref) {
       imageUrl: 'https://picsum.photos/seed/field2/400/250',
       distanceKm: 5,
       sport: 'Basketball',
+      amenities: ['Indoor Seating', 'Lights', 'Cafeteria', 'Locker Rooms'],
     ),
     CourtModel(
       id: 'c3',
@@ -32,6 +40,7 @@ final allCourtsProvider = Provider<List<CourtModel>>((ref) {
       imageUrl: 'https://picsum.photos/seed/field3/400/250',
       distanceKm: 8,
       sport: 'Tennis',
+      amenities: ['Sea View', 'Parking', 'Changing Rooms', 'Lights'],
     ),
     CourtModel(
       id: 'c4',
@@ -41,6 +50,7 @@ final allCourtsProvider = Provider<List<CourtModel>>((ref) {
       imageUrl: 'https://picsum.photos/seed/field4/400/250',
       distanceKm: 10,
       sport: 'Padel',
+      amenities: ['Indoor Courts', 'Café', 'Showers', 'Locker Rooms'],
     ),
     CourtModel(
       id: 'c5',
@@ -50,6 +60,7 @@ final allCourtsProvider = Provider<List<CourtModel>>((ref) {
       imageUrl: 'https://picsum.photos/seed/field5/400/250',
       distanceKm: 7,
       sport: 'Volleyball',
+      amenities: ['Beach Access', 'Sunbeds', 'Café', 'Lights'],
     ),
     CourtModel(
       id: 'c6',
@@ -59,6 +70,13 @@ final allCourtsProvider = Provider<List<CourtModel>>((ref) {
       imageUrl: 'https://picsum.photos/seed/field6/400/250',
       distanceKm: 12,
       sport: 'Football',
+      amenities: [
+        'Parking',
+        'Showers',
+        'Locker Rooms',
+        'Scoreboard',
+        'Referee Optional',
+      ],
     ),
   ];
 });
