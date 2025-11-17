@@ -11,6 +11,8 @@ class BookingModel {
   final int pricePerHour;
   final BookingStatus status;
   final DateTime createdAt;
+  final double lat;
+  final double lng;
 
   const BookingModel({
     required this.id,
@@ -25,6 +27,8 @@ class BookingModel {
     required this.pricePerHour,
     required this.status,
     required this.createdAt,
+    required this.lat,
+    required this.lng,
   });
 
   double get totalPrice => pricePerHour * durationHours;

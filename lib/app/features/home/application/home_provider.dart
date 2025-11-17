@@ -12,6 +12,8 @@ final nearbyCourtsProvider = Provider<List<CourtModel>>((ref) {
       imageUrl: 'https://picsum.photos/seed/field1/400/250',
       distanceKm: 3,
       sport: 'Football',
+      lat: 33.8938,
+      lng: 35.5018,
     ),
     CourtModel(
       id: 'c2',
@@ -21,6 +23,8 @@ final nearbyCourtsProvider = Provider<List<CourtModel>>((ref) {
       imageUrl: 'https://picsum.photos/seed/field2/400/250',
       distanceKm: 5,
       sport: 'Football',
+      lat: 33.5600,
+      lng: 35.3750,
     ),
     CourtModel(
       id: 'c2',
@@ -30,6 +34,8 @@ final nearbyCourtsProvider = Provider<List<CourtModel>>((ref) {
       imageUrl: 'https://picsum.photos/seed/field3/400/250',
       distanceKm: 8,
       sport: 'Football',
+      lat: 33.2710,
+      lng: 35.2038,
     ),
     CourtModel(
       id: 'c2',
@@ -39,6 +45,8 @@ final nearbyCourtsProvider = Provider<List<CourtModel>>((ref) {
       imageUrl: 'https://picsum.photos/seed/field4/400/250',
       distanceKm: 10,
       sport: 'Football',
+      lat: 33.8925,
+      lng: 35.4955,
     ),
   ];
 });

@@ -7,6 +7,8 @@ class CourtModel {
   final int? distanceKm;
   final String sport;
   final List<String>? amenities;
+  final double lat;
+  final double lng;
 
   const CourtModel({
     required this.id,
@@ -17,5 +19,7 @@ class CourtModel {
     required this.distanceKm,
     required this.sport,
     this.amenities,
+    required this.lat,
+    required this.lng,
   });
 }

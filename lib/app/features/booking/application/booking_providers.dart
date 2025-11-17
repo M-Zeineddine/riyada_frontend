@@ -17,6 +17,8 @@ final allBookingsProvider = Provider<List<BookingModel>>((ref) {
       pricePerHour: 30,
       status: BookingStatus.confirmed,
       createdAt: DateTime.now().subtract(const Duration(days: 1)),
+      lat: 33.8938,
+      lng: 35.5018,
     ),
     BookingModel(
       id: 'b2',
@@ -31,6 +33,8 @@ final allBookingsProvider = Provider<List<BookingModel>>((ref) {
       pricePerHour: 28,
       status: BookingStatus.confirmed,
       createdAt: DateTime.now().subtract(const Duration(days: 3)),
+      lat: 33.5600,
+      lng: 35.3750,
     ),
     BookingModel(
       id: 'b3',
@@ -45,6 +49,8 @@ final allBookingsProvider = Provider<List<BookingModel>>((ref) {
       pricePerHour: 25,
       status: BookingStatus.completed,
       createdAt: DateTime.now().subtract(const Duration(days: 10)),
+      lat: 33.2710,
+      lng: 35.2038,
     ),
     BookingModel(
       id: 'b4',
@@ -59,6 +65,8 @@ final allBookingsProvider = Provider<List<BookingModel>>((ref) {
       pricePerHour: 35,
       status: BookingStatus.cancelled,
       createdAt: DateTime.now().subtract(const Duration(days: 7)),
+      lat: 33.8925,
+      lng: 35.4955,
     ),
   ];
 });

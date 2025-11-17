@@ -21,6 +21,8 @@ final allCourtsProvider = Provider<List<CourtModel>>((ref) {
         'Lights',
         'Referee Optional',
       ],
+      lat: 33.8938,
+      lng: 35.5018,
     ),
     CourtModel(
       id: 'c2',
@@ -31,6 +33,8 @@ final allCourtsProvider = Provider<List<CourtModel>>((ref) {
       distanceKm: 5,
       sport: 'Basketball',
       amenities: ['Indoor Seating', 'Lights', 'Cafeteria', 'Locker Rooms'],
+      lat: 33.5600,
+      lng: 35.3750,
     ),
     CourtModel(
       id: 'c3',
@@ -41,6 +45,8 @@ final allCourtsProvider = Provider<List<CourtModel>>((ref) {
       distanceKm: 8,
       sport: 'Tennis',
       amenities: ['Sea View', 'Parking', 'Changing Rooms', 'Lights'],
+      lat: 33.2710,
+      lng: 35.2038,
     ),
     CourtModel(
       id: 'c4',
@@ -51,6 +57,8 @@ final allCourtsProvider = Provider<List<CourtModel>>((ref) {
       distanceKm: 10,
       sport: 'Padel',
       amenities: ['Indoor Courts', 'Café', 'Showers', 'Locker Rooms'],
+      lat: 33.8925,
+      lng: 35.4955,
     ),
     CourtModel(
       id: 'c5',
@@ -61,6 +69,8 @@ final allCourtsProvider = Provider<List<CourtModel>>((ref) {
       distanceKm: 7,
       sport: 'Volleyball',
       amenities: ['Beach Access', 'Sunbeds', 'Café', 'Lights'],
+      lat: 33.9806,
+      lng: 35.6170,
     ),
     CourtModel(
       id: 'c6',
@@ -77,6 +87,8 @@ final allCourtsProvider = Provider<List<CourtModel>>((ref) {
         'Scoreboard',
         'Referee Optional',
       ],
+      lat: 34.4333,
+      lng: 35.8333,
     ),
   ];
 });

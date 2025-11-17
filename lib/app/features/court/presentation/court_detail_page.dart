@@ -4,6 +4,9 @@ import 'package:go_router/go_router.dart';
 import 'package:riyada_frontend/app/features/court/data/court_model.dart';
 import 'package:riyada_frontend/app/features/court/application/court_by_id_provider.dart';
 import 'package:riyada_frontend/app/shared/widgets/image_carousel.dart';
+import 'package:flutter_map/flutter_map.dart';
+import 'package:latlong2/latlong.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class CourtDetailPage extends ConsumerStatefulWidget {
   const CourtDetailPage({super.key, required this.id, this.courtExtra});
@@ -39,49 +42,14 @@ class _CourtDetailPageState extends ConsumerState<CourtDetailPage> {
     return Scaffold(
       body: CustomScrollView(
         slivers: [
-          SliverAppBar(
-            expandedHeight: 260,
-            pinned: true,
-            // No title while expanded — you already show the name below
-            title: null,
-            leading: IconButton(
-              icon: const Icon(Icons.arrow_back),
-              onPressed: () => context.pop(),
-            ),
-            actions: [
-              Container(
-                margin: const EdgeInsets.only(right: 8),
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 10,
-                  vertical: 6,
-                ),
-                decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(0.9),
-                  borderRadius: BorderRadius.circular(12),
-                  boxShadow: const [
-                    BoxShadow(
-                      color: Colors.black12,
-                      blurRadius: 4,
-                      offset: Offset(0, 1),
-                    ),
-                  ],
-                ),
-                child: Text(
-                  court.sport,
-                  style: TextStyle(
-                    fontWeight: FontWeight.w700,
-                    color: cs.primary,
-                  ),
-                ),
-              ),
-              const SizedBox(width: 8),
-            ],
-
-            flexibleSpace: FlexibleSpaceBar(
-              background: Stack(
+          SliverToBoxAdapter(
+            child: SizedBox(
+              height: 260,
+              width: double.infinity,
+              child: Stack(
                 fit: StackFit.expand,
                 children: [
-                  // Header carousel
+                  // Carousel background
                   ImageCarousel(
                     images: images,
                     height: 260,
@@ -89,7 +57,7 @@ class _CourtDetailPageState extends ConsumerState<CourtDetailPage> {
                     showDots: true,
                   ),
 
-                  // Fade gradient at bottom for legibility
+                  // Gradient for readability
                   Positioned.fill(
                     child: DecoratedBox(
                       decoration: BoxDecoration(
@@ -102,6 +70,56 @@ class _CourtDetailPageState extends ConsumerState<CourtDetailPage> {
                           ],
                         ),
                       ),
+                    ),
+                  ),
+
+                  // Back button + sport pill, inside SafeArea so they are below status bar
+                  SafeArea(
+                    child: Stack(
+                      children: [
+                        // back button – top-left
+                        Positioned(
+                          left: 8,
+                          top: 2,
+                          child: IconButton(
+                            icon: const Icon(
+                              Icons.arrow_back,
+                              color: Colors.white,
+                            ),
+                            onPressed: () => context.pop(),
+                          ),
+                        ),
+
+                        // sport pill – top-right
+                        Positioned(
+                          right: 12,
+                          top: 12,
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 10,
+                              vertical: 6,
+                            ),
+                            decoration: BoxDecoration(
+                              color: Colors.white.withOpacity(0.9),
+                              borderRadius: BorderRadius.circular(12),
+                              boxShadow: const [
+                                BoxShadow(
+                                  color: Colors.black12,
+                                  blurRadius: 4,
+                                  offset: Offset(0, 1),
+                                ),
+                              ],
+                            ),
+                            child: Text(
+                              court.sport,
+                              style: TextStyle(
+                                fontWeight: FontWeight.w700,
+                                color: cs.primary,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ],
@@ -223,8 +241,62 @@ class _CourtDetailPageState extends ConsumerState<CourtDetailPage> {
                           .map((a) => _AmenityChip(label: a))
                           .toList(),
                     ),
-                    const SizedBox(height: 28),
+                    const SizedBox(height: 16),
                   ],
+
+                  Divider(color: Colors.black12.withOpacity(0.08)),
+
+                  if (court.lat != null && court.lng != null) ...[
+                    const SizedBox(height: 16),
+                    Text(
+                      'Location',
+                      style: theme.textTheme.titleMedium?.copyWith(
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                    const SizedBox(height: 12),
+
+                    SizedBox(
+                      height: 220,
+                      width: double.infinity,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(12),
+                        child: FlutterMap(
+                          options: MapOptions(
+                            initialCenter: LatLng(
+                              court.lat!,
+                              court.lng!,
+                            ), // ✅ new names
+                            initialZoom: 15,
+                          ),
+                          children: [
+                            TileLayer(
+                              urlTemplate:
+                                  'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+                              userAgentPackageName:
+                                  'com.riyada_frontend.app', // any package name
+                            ),
+                            MarkerLayer(
+                              markers: [
+                                Marker(
+                                  point: LatLng(court.lat!, court.lng!),
+                                  width: 40,
+                                  height: 40,
+                                  alignment: Alignment.bottomCenter,
+                                  child: const Icon(
+                                    Icons.location_pin,
+                                    size: 40,
+                                    color: Colors.red,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                  const SizedBox(height: 28),
                 ],
               ),
             ),
