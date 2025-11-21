@@ -6,6 +6,7 @@ import 'package:riyada_frontend/app/features/booking/presentation/bookings_page.
 import 'package:riyada_frontend/app/features/booking/presentation/court_booking_page.dart';
 import 'package:riyada_frontend/app/features/court/data/court_model.dart';
 import 'package:riyada_frontend/app/features/court/presentation/court_detail_page.dart';
+import 'package:riyada_frontend/app/features/user/presentation/profile_page.dart';
 
 import 'package:riyada_frontend/app/features/welcome/welcome_page.dart';
 import 'package:riyada_frontend/app/features/home/presentation/home_page.dart';
@@ -97,7 +98,7 @@ final routerProvider = Provider<GoRouter>((ref) {
               GoRoute(
                 path: '/profile',
                 name: 'profile',
-                builder: (_, __) => const Center(child: Text("dfjkdf")),
+                builder: (_, __) => const ProfilePage(),
               ),
             ],
           ),
